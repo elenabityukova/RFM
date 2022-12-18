@@ -21,29 +21,29 @@
 Таблица `users` содержит информацию о 1 000 клиентах
 
 SELECT COUNT(1)  
-FROM users;
+FROM production.users;
 
 Таблица с заказами `orders` содержит данные о 10 000 заказах 1 000 клиентов, из них  в статусе 'Closed' 4 991 у 988 клиентов
 
 SELECT COUNT(1), COUNT(DISTINCT user_id)  
-FROM orders;
+FROM production.orders;
 
 SELECT count(1), COUNT(DISTINCT user_id)   
-FROM orders  
+FROM production.orders  
 WHERE status =  
     (SELECT id  
-     FROM orderstatuses o  
+     FROM production.orderstatuses o  
      WHERE KEY = 'Closed');
 
 **Проверка периода данных в базе**
 
 SELECT min(order_ts), max(order_ts)  
-FROM orders;  
+FROM production.orders;  
 
 Данные содержатся за период с 12.02.2022 по 14.03.2022 год
 
 SELECT DATE_TRUNC('month', order_ts)::date, count(1)  
-FROM orders  
+FROM production.orders  
 GROUP BY 1  
 ORDER BY 1;
 
@@ -58,7 +58,7 @@ ORDER BY 1;
 **Проверка данных о сумме заказа**
 
 SELECT min(payment), max(payment), avg(payment)  
-FROM orders;
+FROM production.orders;
 
 | Минимальная сумма заказа  | Максимальная сумма заказа | Средняя сумма заказа| 
 | ------------------------- | --------------------------|---------------------|
