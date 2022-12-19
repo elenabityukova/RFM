@@ -54,25 +54,29 @@
 #### 1.4.2 DDL-запрос для создания витрины
 <code>[DDL-запрос для создания витрины](https://github.com/elenabityukova/RFM/blob/main/datamart_ddl.sql)</code>
 
-CREATE TABLE analysis.dm_rfm_segments (
-user_id int NOT NULL PRIMARY KEY,
-recency int NOT NULL CHECK(recency >= 1 AND recency <= 5),
-frequency int NOT NULL CHECK(frequency >= 1 AND frequency <= 5),
-monetary_value int NOT NULL CHECK(monetary_value >= 1 AND monetary_value <= 5)
-);
-
 #### 1.4.3 SQL-запрос для заполнения витрины
 
-CREATE TABLE analysis.tmp_rfm_recency (
- user_id INT NOT NULL PRIMARY KEY,
- recency INT NOT NULL CHECK(recency >= 1 AND recency <= 5)
-);
-CREATE TABLE analysis.tmp_rfm_frequency (
- user_id INT NOT NULL PRIMARY KEY,
- frequency INT NOT NULL CHECK(frequency >= 1 AND frequency <= 5)
-);
-CREATE TABLE analysis.tmp_rfm_monetary_value (
- user_id INT NOT NULL PRIMARY KEY,
- monetary_value INT NOT NULL CHECK(monetary_value >= 1 AND monetary_value <= 5)
-);
+**Создание таблиц под показатели**
+
+CREATE TABLE analysis.tmp_rfm_recency (  
+ user_id INT NOT NULL PRIMARY KEY,  
+ recency INT NOT NULL CHECK(recency >= 1 AND recency <= 5)  
+);  
+CREATE TABLE analysis.tmp_rfm_frequency (  
+ user_id INT NOT NULL PRIMARY KEY,  
+ frequency INT NOT NULL CHECK(frequency >= 1 AND frequency <= 5)  
+);  
+CREATE TABLE analysis.tmp_rfm_monetary_value (  
+ user_id INT NOT NULL PRIMARY KEY,  
+ monetary_value INT NOT NULL CHECK(monetary_value >= 1 AND monetary_value <= 5)  
+);  
+
+<code>[SQL-запрос для заполнения таблицы analysis.tmp_rfm_recency](https://github.com/elenabityukova/RFM/blob/main/tmp_rfm_recency.sql)</code>
+
+<code>[SQL-запрос для заполнения таблицы analysis.tmp_rfm_frequency](https://github.com/elenabityukova/RFM/blob/main/tmp_rfm_frequency.sql)</code>
+
+<code>[SQL-запрос для заполнения таблицы analysis.tmp_rfm_monetary_value](https://github.com/elenabityukova/RFM/blob/main/tmp_rfm_monetary_value.sql)</code>
+
+<code>[SQL-запрос для заполнения витрины analysis.dm_rfm_segments](https://github.com/elenabityukova/RFM/blob/main/datamart_query.sql)</code>
+
 
