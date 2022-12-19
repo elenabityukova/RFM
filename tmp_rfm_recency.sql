@@ -1,6 +1,6 @@
-truncate analysis.tmp_rfm_recency;
+TRUNCATE analysis.tmp_rfm_recency;
 
-insert into analysis.tmp_rfm_recency 
+INSERT INTO analysis.tmp_rfm_recency 
 WITH order_closed AS(
 SELECT u.id,
 	   max(o.order_ts) AS orders_closed_last_date,
